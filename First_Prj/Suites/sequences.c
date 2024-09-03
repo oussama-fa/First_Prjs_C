@@ -2,7 +2,7 @@
 
 int main()
 {
-	//Suites In Maths 
+	//Sequences In Maths 
     int n1, n2, i, U0, Un;
     int n = 1;
     

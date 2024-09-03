@@ -1,5 +1,16 @@
 #include <unistd.h>
 
+size_t	ft_strlen(char *s);
+void	str_to_bin(char *str);
+
+int	main(int ac, char **av)
+{
+	if (ac == 2)
+		str_to_bin(av[1]);
+	else
+		write(2, "Error", 6);
+	write(1, "\n", 1);
+}
 size_t	ft_strlen(char *s)
 {
 	size_t	i;
@@ -33,13 +44,4 @@ void	str_to_bin(char *str)
 		bit = 7;// reset bit to 7 to move a next character
 		i++;// move to next char
 	}
-}
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-		str_to_bin(av[1]);
-	else
-		write(2, "Error", 6);
-	write(1, "\n", 1);
 }
