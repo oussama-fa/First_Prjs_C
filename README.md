@@ -61,30 +61,9 @@ Here’s a brief overview of some of the programs included:
 
 ---
 
-## Screenshots
-
-Here’s a preview of some of the outputs from the mini-game and other projects:
-
-<img src="screenshot1.png" alt="Game Screenshot 1" width="400"/>
-<img src="screenshot2.png" alt="Game Screenshot 2" width="400"/>
-
----
-
 ## Why C?
 
 C is one of the oldest and most powerful programming languages still in use today. It's widely used for system programming, embedded systems, and operating systems. Mastering C provides a strong foundation for understanding how software interacts with hardware and is essential for any developer aiming to work with low-level code.
-
----
-
-## Contributing
-
-While this repository is a personal project, feel free to fork it and contribute your improvements or new ideas. Please follow the guidelines below if you wish to contribute:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/your-feature-name`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/your-feature-name`)
-5. Create a new Pull Request
 
 ---
 
