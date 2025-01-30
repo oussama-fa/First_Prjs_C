@@ -6,58 +6,48 @@ Welcome to **First_Prjs_C**! This repository showcases my journey through the wo
 
 Whether you're a beginner in C or looking for examples of low-level programming, this repo provides insights into creating functional programs, understanding memory management, and optimizing performance.
 
----
-
-## Projects Included
-
-- **Beginner C Programs**  
-  This section contains simple programs that helped me learn the basics of C, such as loops, conditionals, and functions. These programs represent the foundation of my journey into programming.
-
-- **Mini Game**  
-  I developed a simple yet fun mini-game that lets you interact with the computer in a playful way. This was a great project for applying my understanding of C in an interactive setting, working with user inputs, and managing game logic.
-
-- **Low-Level Programming**  
-  Dive into some advanced topics like memory management, pointers, and bitwise operations. These projects challenge the boundaries of what can be done at the system level and deepen my understanding of how programs interact with hardware.
+**First_Prjs_C** is a collection of my first projects in **C** programming . This repository contains different directories, each representing a small project that covers fundamental concepts of C language, such as loops, conditions, functions, pointers, file handling, and more. These projects helped me build a strong foundation in C programming.
 
 ---
 
 ## Features
 
-- **Basic C Syntax**: Mastering functions, variables, loops, and conditionals in C.
+- **Basic C Syntax**: Mastering functions, variables, loops, and conditionals in C, Helps build problem-solving skills with C programming.
 - **Game Logic**: Designing a mini-game in C with user interaction and game state management.
-- **Memory Handling**: Projects that involve dynamic memory allocation and pointer manipulation.
+- **Memory Handling**: Projects that involve dynamic memory allocation and pointer manipulation, Covers fundamental topics like input/output, memory management, and functions.
 - **Advanced C Concepts**: Deep dive into low-level programming, optimizing code for performance, and using bitwise operations.
-  
+
+---
+
+## Each directory contains a separate project with a specific learning objective.
+
+- **Code_Wars**         : Improve my problem-solving skills with C programming.
+- **Exam_42**           : Exams in 42 Network School - 1337 KH.
+- **GAME**              : A simple text-based game where players make decisions that affect the outcome.
+- **Low_Level**         : Projects focusing on bitwise operations for learning how to manipulate individual bits in numbers.
+- **My_First_Projects** : This section contains simple programs that helped me learn the basics of C, such as loops, conditionals, and functions. These programs represent the foundation of my journey into programming.
+
 ---
 
 ## How to Run
 
 1. **Clone the repository** to your local machine:
-    ```bash
-    git clone https://github.com/oussama-fa/First_Prjs_C.git
-    ```
+```bash
+git clone https://github.com/oussama-fa/First_Prjs_C.git
+```
 2. **Navigate** into the project folder:
-    ```bash
-    cd First_Prjs_C
-    ```
-3. **Compile** your C programs using `gcc` or your preferred C compiler:
-    ```bash
-    gcc -o program_name file_name.c
-    ```
+```bash
+cd First_Prjs_C
+cd "Directory_you_wan't"
+```
+3. **Compile** your C programs using `gcc` or `cc` your preferred C compiler:
+```bash
+cc -o program_name file_name.c
+```
 4. **Run** the compiled program:
-    ```bash
-    ./program_name
-    ```
-
----
-
-## Example Programs
-
-Here’s a brief overview of some of the programs included:
-
-- **Mini-Game**: A simple text-based game where players make decisions that affect the outcome.
-- **Memory Management Demo**: A program showcasing memory allocation and deallocation in C.
-- **Bitwise Operation Practice**: Projects focusing on bitwise operations for learning how to manipulate individual bits in numbers.
+```bash
+./program_name
+```
 
 ---
 
@@ -67,22 +57,9 @@ C is one of the oldest and most powerful programming languages still in use toda
 
 ---
 
-## Contact
+## Author
 
-If you have any questions or want to collaborate, feel free to reach out to me.
+*Oussama FARAH*
 
-- [Instagram](https://www.instagram.com/oussama._.farah/)
-- Email: oussama05farah@gmail.com
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgements
-
-A big thank you to all the amazing resources that helped me on my journey with C programming! Special shoutout to the C community and educational platforms for providing such great learning materials.
-
+- 📱 **Instagram**: [@oussama._.farah](https://www.instagram.com/oussama._.farah/)
+- ✉️ **Email**: [oussama05farah@gmail.com](mailto:oussama05farah@gmail.com)
