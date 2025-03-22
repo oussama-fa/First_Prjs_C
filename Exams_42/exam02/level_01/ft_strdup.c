@@ -1,5 +1,16 @@
+// Assignment name  : ft_strdup
+// Expected files   : ft_strdup.c
+// Allowed functions: malloc
+// --------------------------------------------------------------------------------
+
+// Reproduce the behavior of the function strdup (man strdup).
+
+// Your function must be declared as follows:
+
+// char    *ft_strdup(char *src);
+
 #include <stdlib.h>
-#include <stdio.h>
+// #include <stdio.h>
 
 int ft_strlen(char *s)
 {
@@ -21,7 +32,7 @@ char    *ft_strdup(char *src)
     return (s);
 }
 
-int main()
-{
-    printf("%s", ft_strdup("hello World"));
-}
+// int main()
+// {
+//     printf("%s", ft_strdup("hello World"));
+// }

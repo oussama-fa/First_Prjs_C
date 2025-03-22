@@ -1,4 +1,16 @@
-#include <stdio.h>
+// Assignment name	: ft_strcspn
+// Expected files	: ft_strcspn.c
+// Allowed functions: None
+// ---------------------------------------------------------------
+
+// Reproduce exactly the behavior of the function strcspn
+// (man strcspn).
+
+// The function should be prototyped as follows:
+
+// size_t	ft_strcspn(const char *s, const char *reject);
+
+// #include <stdio.h>
 #include <string.h>
 
 
@@ -29,8 +41,8 @@ size_t	ft_strcspn(const char *s, const char *reject)
      return (ft_strlen(s));
 }
 
-int main(int ac, char **av)
-{
-    printf("mine : %zu\n", ft_strcspn(av[1], av[2]));
-    printf("syse : %zu\n", strcspn(av[1], av[2]));
-}
+// int main(int ac, char **av)
+// {
+//     printf("mine : %zu\n", ft_strcspn(av[1], av[2]));
+//     printf("syse : %zu\n", strcspn(av[1], av[2]));
+// }

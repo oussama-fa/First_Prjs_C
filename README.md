@@ -22,6 +22,7 @@ Whether you're a beginner in C or looking for examples of low-level programming,
 ## Each directory contains a separate project with a specific learning objective.
 
 - **Code_Wars**         : Improve my problem-solving skills with C programming.
+- **Hacker_Rank**       : Improve my problem-solving skills with C programming.
 - **Exam_42**           : Exams in 42 Network School - 1337 KH.
 - **GAME**              : A simple text-based game where players make decisions that affect the outcome.
 - **Low_Level**         : Projects focusing on bitwise operations for learning how to manipulate individual bits in numbers.
