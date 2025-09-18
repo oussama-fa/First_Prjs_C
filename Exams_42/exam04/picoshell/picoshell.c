@@ -1,0 +1,161 @@
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <errno.h>
+#include <stdio.h>
+
+int	picoshell(char **cmds[])
+{
+	pid_t	pid;
+	int		fd[2];
+	int		prev_fd = -1;
+	int		status;
+	int		i = -1;
+	int		exit_code = 0;
+
+	while (cmds[++i])
+	{
+		if (cmds[i + 1] && pipe(fd) == -1)
+			return (1);
+		pid = fork();
+		if (pid == -1)
+		{
+			if (cmds[i + 1])
+			{
+				close(fd[0]);
+				close(fd[1]);
+			}
+			if (prev_fd != -1)
+				close(prev_fd);
+			return (1);
+		}
+		if (pid == 0)
+		{
+			if (prev_fd != -1)
+			{
+				if (dup2(prev_fd, STDIN_FILENO) == -1)
+					exit(1);
+				close(prev_fd);
+			}
+			if (cmds[i + 1])
+			{
+				close(fd[0]);
+				if (dup2(fd[1], STDOUT_FILENO) == -1)
+					exit(1);
+				close(fd[1]);
+			}
+			execvp(cmds[i][0], cmds[i]);
+			exit(1);
+		}
+		if (prev_fd != -1)
+			close(prev_fd);
+		if (cmds[i + 1])
+		{
+			close(fd[1]);
+			prev_fd = fd[0];
+		}
+	}
+	int store_pid;
+	while ((store_pid = wait(&status)) != -1)
+	{
+		if (store_pid == pid && WIFEXITED(status) && WEXITSTATUS(status) != 0)
+			exit_code = 1;
+	}
+	errno = exit_code;
+	return (exit_code);
+}
+
+// Assignment name:     picoshell
+// Expected files:              picoshell.c
+// Allowed functions:   close, fork, wait, exit, execvp, dup2, pipe
+// ___________________________________________________________________
+
+// Write the following function:
+
+// int    picoshell(char **cmds[]);
+
+// The goal of this function is to execute a pipeline. It must execute each
+// commands of cmds and connect the output of one to the input of the
+// next command (just like a shell).
+// e
+// Cmds contains a null-terminated list of valid commands. Each rows
+// of cmds are an argv array directly usable for a call to execvp. The first
+// arguments of each command is the command name or path and can be passed
+// directly as the first argument of execvp.
+
+// If any error occur, The function must return 1 (you must of course
+// close all the open fds before). otherwise the function must wait all child
+// processes and return 0. You will find in this directory a file main.c which
+// contain something to help you test your function.
+
+
+// Examples: 
+// ./picoshell /bin/ls "|" /usr/bin/grep picoshell
+// picoshell
+// ./picoshell echo 'squalala' "|" cat "|" sed 's/a/b/g'
+// squblblb
+
+// ___________________________________________________________________
+
+// Old summary by a student:
+// You are given a main function. It converts received arguments into cmds array
+// of strings. When there is a pipe the commands after the pipe are in the next
+// array of strings. You have to create a pipeline using the cmds you receive from
+// the main, and execute them. If there is any error the function should return 1.
+// Close all FFS before returning. If the cmds executed successfully wait all
+// child processes and return 0.
+
+// #include <stdio.h>
+// #include <string.h>
+
+// static int count_cmds(int argc, char **argv)
+// {
+//     int count = 1;
+//     for (int i = 1; i < argc; i++)
+//     {
+//         if (strcmp(argv[i], "|") == 0)
+//             count++;
+//     }
+//     return count;
+// }
+
+// int main(int argc, char **argv)
+// {
+//     if (argc < 2)
+//         return (fprintf(stderr, "Usage: %s cmd1 [args] | cmd2 [args] ...\n", argv[0]), 1);
+
+//     int cmd_count = count_cmds(argc, argv);
+//     char ***cmds = calloc(cmd_count + 1, sizeof(char **));
+//     if (!cmds)
+//         return (perror("calloc"), 1);
+
+//     // Parsear argumentos y construir array de comandos
+//     int i = 1, j = 0;
+//     while (i < argc)
+//     {
+//         int len = 0;
+//         while (i + len < argc && strcmp(argv[i + len], "|") != 0)
+//             len++;
+        
+//         cmds[j] = calloc(len + 1, sizeof(char *));
+//         if (!cmds[j])
+//             return (perror("calloc"), 1);
+        
+//         for (int k = 0; k < len; k++)
+//             cmds[j][k] = argv[i + k];
+//         cmds[j][len] = NULL;
+        
+//         i += len + 1;  // Saltar el "|"
+//         j++;
+//     }
+//     cmds[cmd_count] = NULL;
+
+//     int ret = picoshell(cmds);
+
+//     // Limpiar memoria
+//     for (int i = 0; cmds[i]; i++)
+//         free(cmds[i]);
+//     free(cmds);
+
+//     return ret;
+// }
