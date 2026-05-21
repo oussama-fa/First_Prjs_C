@@ -22,16 +22,16 @@ int main(int ac, char **av) {
 	FILE *f = ac > 1 ? fopen(av[1], "r") : stdin;
 	if (!f)
 		return (fprintf(stdout, "file error\n"), 1);
-	int height = 0, width = 0;
+	int h = 0, w = 0;
 	char empty = 0, obs = 0, full = 0;
-	if (fscanf(f, "%d %c %c %c\n", &height, &empty, &obs, &full) != 4) // check if the map example or subject file args are seperated by spaces or not, if yes lease at is, if not seperated remove the spaces between the call in scanf "%d%c%c%c" .....
+	if (fscanf(f, "%d %c %c %c\n", &h, &empty, &obs, &full) != 4) // check if the map example or subject file args are seperated by spaces or not, if yes lease at is, if not seperated remove the spaces between the call in scanf "%d%c%c%c" .....
 		return (fprintf(stdout, "map error\n"), 1);
 	if (empty == obs || empty == full || obs == full)
 		return (fprintf(stdout, "map error\n"), 1);
-	char **map = calloc(height, sizeof(char *));
+	char **map = calloc(h, sizeof(char *));
 	if (!map)
 		return (fprintf(stdout, "malloc error\n"), 1);
-	for (int i = 0; i < height; i++) {
+	for (int i = 0; i < h; i++) {
 		char *line = NULL;
 		size_t len = 0;
 		if (getline(&line, &len, f) < 0)
@@ -39,19 +39,19 @@ int main(int ac, char **av) {
 		int l = ft_strlen(line);
 		if (l > 0 && line[l - 1] == '\n')
 			line[--l] = '\0';
-		if (!width)
-			width = l;
-		else if (l != width)
+		if (!w)
+			w = l;
+		else if (l != w)
 			return (fprintf(stdout, "map error\n"), 1);
 		map[i] = line;
 	}
 	if (f != stdin) fclose(f);
-	int **data = calloc(height + 1, sizeof(int *));
-	for (int i = 0; i <= height; i++)
-		data[i] = calloc(width + 1, sizeof(int));
+	int **data = calloc(h + 1, sizeof(int *));
+	for (int i = 0; i <= h; i++)
+		data[i] = calloc(w + 1, sizeof(int));
 	square sq = {0,0,0};
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
+	for (int i = 0; i < h; i++) {
+		for (int j = 0; j < w; j++) {
 			if (map[i][j] == empty) {
 				data[i+1][j+1] = 1 + min3(data[i][j+1], data[i+1][j], data[i][j]);
 				if (sq.size < data[i+1][j+1])
@@ -60,16 +60,15 @@ int main(int ac, char **av) {
 				return (fprintf(stdout, "map error\n"), 1);
 		}
 	}
-	for (int i = sq.x - sq.size + 1; i <= sq.x; i++) {
+	for (int i = sq.x - sq.size + 1; i <= sq.x; i++)
 		for (int j = sq.y - sq.size + 1; j <= sq.y; j++)
 			map[i][j] = full;
-	}
-	for (int i = 0; i < height; i++) {
+	for (int i = 0; i < h; i++) {
 		fprintf(stdout, "%s\n", map[i]);
 		free(map[i]);
 	}
 	free(map);
-	for (int i = 0; i <= height; i++)
+	for (int i = 0; i <= h; i++)
 		free(data[i]);
 	free(data);
 	return 0;
